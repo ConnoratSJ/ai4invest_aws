@@ -3,7 +3,9 @@ import { useEffect, useState } from 'react';
 
 export default function DashboardPage() {
   const [bucket, setBucket] = useState('');
-  const [picks, setPicks] = useState<any[]>([]);
+  const picks = [{pred_return:1, ticker: "test"}]
+
+  //const [picks, setPicks] = useState<any[]>([]);
 
   useEffect(() => {
     const storedBucket = localStorage.getItem('risk_bucket');
@@ -16,6 +18,7 @@ export default function DashboardPage() {
 
     setBucket(storedBucket);
 
+/*
     fetch('http://localhost:5050/api/dashboard', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -24,7 +27,8 @@ export default function DashboardPage() {
       .then((res) => res.json())
       .then((data) => setPicks(data.picks))
       .catch((err) => console.error('API error', err));
-  }, []);
+*/  }, []);
+
 
   return (
     <div className="min-h-screen bg-gray-50 text-black p-8">
@@ -85,8 +89,7 @@ export default function DashboardPage() {
       <div className="mt-8">
         <a
           className="inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
-          href={`http://localhost:5050/api/download/${bucket}`}
-          download
+  
         >
           Download Picks (CSV)
         </a>
@@ -94,3 +97,5 @@ export default function DashboardPage() {
     </div>
   );
 }
+//href={`http://localhost:5050/api/download/${bucket}`}
+ //         download

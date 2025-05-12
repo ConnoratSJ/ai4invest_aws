@@ -2,7 +2,7 @@
 import { NextResponse } from 'next/server';
 import { readFile } from 'fs/promises';
 import path from 'path';
-
+/*
 const usersFile = path.join(process.cwd(), 'data', 'data.json');
 
 export async function POST(req: Request) {
@@ -21,6 +21,17 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json({ message: 'Login successful', username: foundUser.username, risk_bucket:foundUser.risk_bucket }, { status: 200 });
+  } catch (error) {
+    console.error('Login error:', error);
+    return NextResponse.json({ message: 'Internal server error' }, { status: 500 });
+  }
+}
+*/
+export async function POST(req: Request) {
+  try {
+    const { email, password } = await req.json();
+
+  return NextResponse.json({ message: 'Login successful', username: email, risk_bucket:'medium' }, { status: 200 });
   } catch (error) {
     console.error('Login error:', error);
     return NextResponse.json({ message: 'Internal server error' }, { status: 500 });

@@ -7,7 +7,7 @@ export default function CreateFormPage() {
       
         try {
           
-      
+          /*
           // 送出表單到 Flask 的 /api/predict 做風險預測
           const predictResponse = await fetch("http://localhost:5050/api/predict", {
             method: "POST",
@@ -34,17 +34,20 @@ export default function CreateFormPage() {
               "Self-rated overall financial knowledge": formData["Self-rated overall financial knowledge"],
             }),
           });
+      */
+          //if (!predictResponse.ok) throw new Error("Prediction failed");
       
-          if (!predictResponse.ok) throw new Error("Prediction failed");
-      
-          const predictData = await predictResponse.json();
-          localStorage.setItem("risk_bucket", predictData.risk_bucket);
+          //const predictData = await predictResponse.json();
+
+          //localStorage.setItem("risk_bucket", predictData.risk_bucket);
           
           const submissionData = {
             email: formData.email,
             username: formData.username,
             password: formData.password,
-            risk_bucket: predictData.risk_bucket
+            //risk_bucket: predictData.risk_bucket
+            risk_bucket: 'medium'
+
           };
 
           // 送出表單到你自己的註冊 API（可留著）

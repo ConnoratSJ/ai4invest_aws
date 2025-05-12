@@ -2,12 +2,12 @@ import { NextResponse } from 'next/server';
 import { writeFile, mkdir, readFile } from 'fs/promises';
 import path from 'path';
 
-const dataFilePath = path.join(process.cwd(), 'data', 'data.json');
+//const dataFilePath = path.join(process.cwd(), 'data', 'data.json');
 
 export async function POST(request: Request) {
   try {
     const formData = await request.json();
-
+    /*
     const dataDir = path.dirname(dataFilePath);
     await mkdir(dataDir, { recursive: true });
 
@@ -25,7 +25,7 @@ export async function POST(request: Request) {
     });
 
     await writeFile(dataFilePath, JSON.stringify(existing, null, 2), 'utf-8');
-
+*/
     return NextResponse.json({ message: 'Form saved to data.json' }, { status: 200 });
   } catch (error) {
     console.error('❌ Error saving form:', error);
