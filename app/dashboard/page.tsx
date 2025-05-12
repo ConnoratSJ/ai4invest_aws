@@ -18,16 +18,8 @@ export default function DashboardPage() {
 
     setBucket(storedBucket);
 
-/*
-    fetch('http://localhost:5050/api/dashboard', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams({ risk_bucket: storedBucket }),
-    })
-      .then((res) => res.json())
-      .then((data) => setPicks(data.picks))
-      .catch((err) => console.error('API error', err));
-*/  }, []);
+
+  }, []);
 
 
   return (
@@ -97,5 +89,3 @@ export default function DashboardPage() {
     </div>
   );
 }
-//href={`http://localhost:5050/api/download/${bucket}`}
- //         download

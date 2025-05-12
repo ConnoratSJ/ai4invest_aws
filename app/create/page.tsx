@@ -45,19 +45,12 @@ export default function CreateFormPage() {
             email: formData.email,
             username: formData.username,
             password: formData.password,
-            //risk_bucket: predictData.risk_bucket
             risk_bucket: 'medium'
 
           };
 
-          // 送出表單到你自己的註冊 API（可留著）
-          const response = await fetch("/api/submit/create", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(submissionData),
-          });
+          
       
-          if (!response.ok) throw new Error("User creation failed");
           localStorage.setItem("username", formData.username);
           
           window.location.href = "/dashboard";

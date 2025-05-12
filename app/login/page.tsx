@@ -11,17 +11,8 @@ export default function CreateFormPage() {
     const handleSubmit = async () => {
      
         try {
-            const response = await fetch("/api/submit/login", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(formData),
-            });
-      
-            if (!response.ok) throw new Error("Submission failed");
-      
-            const data = await response.json();
-            localStorage.setItem("risk_bucket", data.risk_bucket);
-            login(data.username); // ← 在這裡用 context 更新狀態
+            localStorage.setItem("risk_bucket", 'medium');
+            login(formData.username); // ← 在這裡用 context 更新狀態
             router.push('/dashboard');
           } catch (error) {
             console.error(error);
@@ -34,6 +25,7 @@ export default function CreateFormPage() {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     email: "",
+    username: "",
     password: "",
   });
 
@@ -51,6 +43,14 @@ export default function CreateFormPage() {
       <input
         name="email"
         value={formData.email}
+        onChange={handleChange}
+        className="w-full mb-4 p-2 border rounded"
+      />
+      
+      <label className="block mb-2">Username</label>
+      <input
+        name="username"
+        value={formData.username}
         onChange={handleChange}
         className="w-full mb-4 p-2 border rounded"
       />
